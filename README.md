@@ -15,7 +15,7 @@ A smart video player implementation using Video.js and React.
 
 ```bash
 # Clone the repository
-git clone [your-repository-url]
+git clone https://github.com/admarble/CTPlayer.git
 cd CTPlayer
 
 # Install dependencies
