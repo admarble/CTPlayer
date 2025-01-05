@@ -1,0 +1,32 @@
+:root {
+  --vjs-primary-color: #2563eb;
+  --vjs-secondary-color: #1e40af;
+  --vjs-text-color: #ffffff;
+  --vjs-control-bar-height: 48px;
+  --vjs-control-spacing: 12px;
+}
+
+.video-js {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #000000;
+}
+
+.vjs-control-bar {
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  height: var(--vjs-control-bar-height);
+  padding: 0 var(--vjs-control-spacing);
+}
+
+.video-js .vjs-big-play-button {
+  background-color: var(--vjs-primary-color);
+  border-color: var(--vjs-text-color);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 40px;
+  border: 2px solid var(--vjs-text-color);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} 
