@@ -1,0 +1,18 @@
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence,
+# they will be requested for review when someone opens a pull request.
+*       @admarble
+
+# Player core implementation
+/src/player/           @admarble
+
+# Components
+/src/components/       @admarble
+
+# Styles
+/src/styles/          @admarble
+
+# Configuration files
+*.json                @admarble
+*.yml                 @admarble
+*.yaml                @admarble 
