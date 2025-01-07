@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player Demo</title>
+    <link href="https://unpkg.com/video.js/dist/video-js.min.css" rel="stylesheet">
+    <link href="src/styles/theme.css" rel="stylesheet">
+</head>
+<body style="margin: 0; background: #f0f0f0; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div style="width: 80%; max-width: 1200px;">
+        <video
+            id="my-video"
+            class="video-js"
+            controls
+            preload="auto"
+            width="100%"
+            poster="https://vjs.zencdn.net/v/oceans.png"
+            data-setup="{}"
+        >
+            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that supports HTML5 video
+            </p>
+        </video>
+    </div>
+    <script src="https://unpkg.com/video.js/dist/video.min.js"></script>
+    <script>
+        var player = videojs('my-video', {
+            controls: true,
+            fluid: true,
+            html5: {
+                vhs: {
+                    overrideNative: true
+                }
+            },
+            playbackRates: [0.5, 1, 1.5, 2],
+            controlBar: {
+                children: [
+                    'playToggle',
+                    'volumePanel',
+                    'progressControl',
+                    'currentTimeDisplay',
+                    'timeDivider',
+                    'durationDisplay',
+                    'playbackRateMenuButton',
+                    'fullscreenToggle'
+                ]
+            }
+        });
+
+        // Format time display
+        player.on('loadedmetadata', function() {
+            const timeDisplay = player.controlBar.getChild('currentTimeDisplay');
+            const durationDisplay = player.controlBar.getChild('durationDisplay');
+            if (timeDisplay) {
+                timeDisplay.updateTextNode = function(text) {
+                    const time = videojs.formatTime(this.player_.currentTime(), this.player_.duration());
+                    this.contentEl_.textContent = time;
+                };
+            }
+            if (durationDisplay) {
+                durationDisplay.updateTextNode = function(text) {
+                    const time = videojs.formatTime(this.player_.duration());
+                    this.contentEl_.textContent = time;
+                };
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,11 +1,6 @@
-export interface PlaybackFunctions {
-  play(): Promise<void>;
-  pause(): void;
-  seek(time: number): void;
-  setVolume(level: number): void;
-  setPlaybackRate(rate: number): void;
-  setQuality(level: string): void;
-}
+import type videojs from 'video.js';
+
+export type VideoJsPlayer = ReturnType<typeof videojs>;
 
 export interface PlayerConfig {
   techOrder: string[];
@@ -18,4 +13,24 @@ export interface PlayerConfig {
     };
   };
   playbackRates: number[];
+  userActions?: {
+    hotkeys?: boolean;
+  };
+  controlBar?: {
+    children?: string[];
+  };
+}
+
+export type PlayerInstance = VideoJsPlayer;
+
+export interface PlayerState {
+  isPlaying: boolean;
+  volume: number;
+  currentTime: number;
+  duration: number;
+  buffered: number;
+  playbackRate: number;
+  quality: string;
+  isFullscreen: boolean;
+  isPiPActive: boolean;
 } 
